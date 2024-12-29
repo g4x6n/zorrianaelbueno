@@ -47,8 +47,10 @@ public class login extends javax.swing.JFrame {
         PswTitle = new javax.swing.JLabel();
         PswField = new javax.swing.JPasswordField();
         PswSep = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BTNEntrar = new javax.swing.JPanel();
+        LblEntrar = new javax.swing.JLabel();
+        BTNCancelar = new javax.swing.JPanel();
+        LblCancelar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage( getClass().getResource("/img/icono.png")));
@@ -81,35 +83,82 @@ public class login extends javax.swing.JFrame {
 
         UsrTitle.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         UsrTitle.setText("USUARIO");
-        bg.add(UsrTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, 30));
+        bg.add(UsrTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 80, 30));
 
         UsrTxtF.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         UsrTxtF.setForeground(new java.awt.Color(204, 204, 204));
         UsrTxtF.setText("Ingrese su usuario");
         UsrTxtF.setBorder(null);
+        UsrTxtF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UsrTxtF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsrTxtFActionPerformed(evt);
             }
         });
-        bg.add(UsrTxtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 270, 30));
-        bg.add(UsrSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 270, 20));
+        bg.add(UsrTxtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 270, 30));
+        bg.add(UsrSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 270, 20));
 
         PswTitle.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         PswTitle.setText("CONTRASEÑA");
-        bg.add(PswTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 110, 30));
+        bg.add(PswTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 110, 30));
 
         PswField.setForeground(new java.awt.Color(204, 204, 204));
         PswField.setText("Inserte su contraseña");
         PswField.setBorder(null);
-        bg.add(PswField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 270, 30));
-        bg.add(PswSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 270, 20));
+        PswField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bg.add(PswField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 270, 30));
+        bg.add(PswSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 270, 20));
 
-        jButton1.setText("jButton1");
-        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 90, 50));
+        BTNEntrar.setBackground(new java.awt.Color(0, 204, 51));
+        BTNEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setText("jButton1");
-        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 90, 50));
+        LblEntrar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        LblEntrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblEntrar.setText("ENTRAR");
+
+        javax.swing.GroupLayout BTNEntrarLayout = new javax.swing.GroupLayout(BTNEntrar);
+        BTNEntrar.setLayout(BTNEntrarLayout);
+        BTNEntrarLayout.setHorizontalGroup(
+            BTNEntrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BTNEntrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LblEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        BTNEntrarLayout.setVerticalGroup(
+            BTNEntrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BTNEntrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LblEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bg.add(BTNEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 130, 40));
+
+        BTNCancelar.setBackground(new java.awt.Color(255, 51, 51));
+
+        LblCancelar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        LblCancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblCancelar.setText("CANCELAR");
+        LblCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LblCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LblCancelarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BTNCancelarLayout = new javax.swing.GroupLayout(BTNCancelar);
+        BTNCancelar.setLayout(BTNCancelarLayout);
+        BTNCancelarLayout.setHorizontalGroup(
+            BTNCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LblCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        );
+        BTNCancelarLayout.setVerticalGroup(
+            BTNCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LblCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        bg.add(BTNCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,6 +177,10 @@ public class login extends javax.swing.JFrame {
     private void UsrTxtFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsrTxtFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsrTxtFActionPerformed
+
+    private void LblCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblCancelarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_LblCancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -165,8 +218,12 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BTNCancelar;
+    private javax.swing.JPanel BTNEntrar;
     private javax.swing.JLabel FONDO;
     private javax.swing.JLabel LOGO;
+    private javax.swing.JLabel LblCancelar;
+    private javax.swing.JLabel LblEntrar;
     private javax.swing.JPasswordField PswField;
     private javax.swing.JSeparator PswSep;
     private javax.swing.JLabel PswTitle;
@@ -176,7 +233,5 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel ZORRIANA;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel iniciarsesion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
