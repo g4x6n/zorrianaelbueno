@@ -6,18 +6,22 @@
 package login;
 
 import java.awt.Color;
+import database.dao.DaoEmpleado;
+import javax.swing.JOptionPane;
 import tools.UtilsGUI;
 /**
  *
  * @author Alex
  */
 public class login extends javax.swing.JFrame {
-
+    DaoEmpleado daoempleado;
+    int intent = 0;
     /**
      * Creates new form login
      */
     public login() {
         initComponents();
+        daoempleado = new DaoEmpleado();
         configComponents();
     }
     	
@@ -25,7 +29,8 @@ public class login extends javax.swing.JFrame {
         // Titulo de la ventana
         setTitle("Iniciar sesión");
         // posición de la ventana
-        setLocationRelativeTo(null);		    
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -141,6 +146,9 @@ public class login extends javax.swing.JFrame {
         BTNEntrar.setBackground(new java.awt.Color(169, 85, 15));
         BTNEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTNEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTNEntrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BTNEntrarMouseEntered(evt);
             }
@@ -303,6 +311,40 @@ public class login extends javax.swing.JFrame {
             UsrTxtF.setForeground(Color.gray);
         }
     }//GEN-LAST:event_PswFieldKeyPressed
+
+    private void BTNEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEntrarMouseClicked
+      String usuario = UsrTxtF.getText();
+    char[] password = PswField.getPassword();
+
+    // Check if any of the fields are empty
+    if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor ingrese su usuario.", 
+                                      "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (password.length == 0 || String.valueOf(password).equals("********")) {
+        JOptionPane.showMessageDialog(this, "Por favor ingrese su contraseña.", 
+                                      "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Authenticate the user using DaoEmpleado
+    Object[] employee = daoempleado.getEmployeeByUsr(usuario, password);
+
+    // If employee is not found or there is an error
+    if (employee == null || (int) employee[0] == 0) {
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", 
+                                      "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        // Optional: Increment the attempt counter
+        intent++;
+        if (intent >= 3) {
+            JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.", 
+                                          "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0); // Exit the program after 3 failed attempts
+        }
+    }  
+    }//GEN-LAST:event_BTNEntrarMouseClicked
 
     /**
      * @param args the command line arguments
