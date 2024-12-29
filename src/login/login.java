@@ -26,17 +26,40 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bg = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        LOGO = new javax.swing.JLabel();
+        FONDO = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel1.setText("ZORRIANA");
+        jLabel1.setToolTipText("");
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 200, 50));
+
+        LOGO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoblanco.png"))); // NOI18N
+        bg.add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 290, 210));
+
+        FONDO.setBackground(new java.awt.Color(247, 139, 86));
+        FONDO.setForeground(new java.awt.Color(247, 139, 86));
+        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/warehouse.png"))); // NOI18N
+        bg.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -78,5 +101,9 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FONDO;
+    private javax.swing.JLabel LOGO;
+    private javax.swing.JPanel bg;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
