@@ -27,7 +27,7 @@ public class login extends javax.swing.JFrame {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        ZORRIANA = new javax.swing.JLabel();
         LOGO = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
 
@@ -36,15 +36,15 @@ public class login extends javax.swing.JFrame {
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel1.setText("ZORRIANA");
-        jLabel1.setToolTipText("");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 200, 50));
+        ZORRIANA.setFont(new java.awt.Font("Jost", 1, 36)); // NOI18N
+        ZORRIANA.setForeground(new java.awt.Color(240, 240, 240));
+        ZORRIANA.setText("ZORRIANA");
+        ZORRIANA.setToolTipText("");
+        bg.add(ZORRIANA, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 200, 50));
 
         LOGO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoblanco.png"))); // NOI18N
-        bg.add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 290, 210));
+        bg.add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 290, 210));
 
         FONDO.setBackground(new java.awt.Color(247, 139, 86));
         FONDO.setForeground(new java.awt.Color(247, 139, 86));
@@ -103,7 +103,7 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JLabel LOGO;
+    private javax.swing.JLabel ZORRIANA;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
