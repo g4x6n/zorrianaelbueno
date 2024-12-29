@@ -55,7 +55,7 @@ public class dashboard extends javax.swing.JFrame {
         Header = new javax.swing.JPanel();
         Label_Dia = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        dateText = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -222,9 +222,9 @@ public class dashboard extends javax.swing.JFrame {
         jSeparator1.setAlignmentY(1.0F);
         jSeparator1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Jost", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("{dayname} {day} {month} {year}");
+        dateText.setFont(new java.awt.Font("Jost", 1, 14)); // NOI18N
+        dateText.setForeground(new java.awt.Color(255, 255, 255));
+        dateText.setText("{dayname} {day} {month} {year}");
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
@@ -239,7 +239,7 @@ public class dashboard extends javax.swing.JFrame {
                     .addGroup(HeaderLayout.createSequentialGroup()
                         .addComponent(Label_Dia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
+                        .addComponent(dateText)))
                 .addContainerGap())
         );
         HeaderLayout.setVerticalGroup(
@@ -252,7 +252,7 @@ public class dashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(HeaderLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2)
+                        .addComponent(dateText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -326,7 +326,8 @@ public class dashboard extends javax.swing.JFrame {
         int year = now.getYear();
         int dia = now.getDayOfMonth();
         int month = now.getMonthValue();
-        String[] meses = 
+        String[] meses = {"Enero" , "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre" ,"Diciembre" ,};
+        dateText.setText(dia +" "+meses [month - 1]+ " "+year);
     }
     /**
      * @param args the command line arguments
@@ -376,7 +377,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Label_Dia;
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel dateText;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
