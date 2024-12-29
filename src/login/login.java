@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package login;
 
+import tools.UtilsGUI;
 /**
  *
  * @author Alex
@@ -15,6 +17,14 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+        configComponents();
+    }
+    	
+        private void configComponents(){
+        // Titulo de la ventana
+        setTitle("Iniciar sesión");
+        // posición de la ventana
+        setLocationRelativeTo(null);		    
     }
 
     /**
@@ -30,8 +40,22 @@ public class login extends javax.swing.JFrame {
         ZORRIANA = new javax.swing.JLabel();
         LOGO = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
+        iniciarsesion = new javax.swing.JLabel();
+        UsrTitle = new javax.swing.JLabel();
+        UsrTxtF = new javax.swing.JTextField();
+        UsrSep = new javax.swing.JSeparator();
+        PswTitle = new javax.swing.JLabel();
+        PswField = new javax.swing.JPasswordField();
+        PswSep = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage( getClass().getResource("/img/icono.png")));
+        setLocation(new java.awt.Point(0, 0));
+        setLocationByPlatform(true);
+        setName("Iniciar Sesión"); // NOI18N
+        setResizable(false);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,6 +75,42 @@ public class login extends javax.swing.JFrame {
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/warehouse.png"))); // NOI18N
         bg.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 500));
 
+        iniciarsesion.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        iniciarsesion.setText("INICIAR SESIÓN");
+        bg.add(iniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 270, 50));
+
+        UsrTitle.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        UsrTitle.setText("USUARIO");
+        bg.add(UsrTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, 30));
+
+        UsrTxtF.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        UsrTxtF.setForeground(new java.awt.Color(204, 204, 204));
+        UsrTxtF.setText("Ingrese su usuario");
+        UsrTxtF.setBorder(null);
+        UsrTxtF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsrTxtFActionPerformed(evt);
+            }
+        });
+        bg.add(UsrTxtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 270, 30));
+        bg.add(UsrSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 270, 20));
+
+        PswTitle.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        PswTitle.setText("CONTRASEÑA");
+        bg.add(PswTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 110, 30));
+
+        PswField.setForeground(new java.awt.Color(204, 204, 204));
+        PswField.setText("Inserte su contraseña");
+        PswField.setBorder(null);
+        bg.add(PswField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 270, 30));
+        bg.add(PswSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 270, 20));
+
+        jButton1.setText("jButton1");
+        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 90, 50));
+
+        jButton2.setText("jButton1");
+        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 90, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,6 +124,10 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void UsrTxtFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsrTxtFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsrTxtFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,7 +167,16 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JLabel LOGO;
+    private javax.swing.JPasswordField PswField;
+    private javax.swing.JSeparator PswSep;
+    private javax.swing.JLabel PswTitle;
+    private javax.swing.JSeparator UsrSep;
+    private javax.swing.JLabel UsrTitle;
+    private javax.swing.JTextField UsrTxtF;
     private javax.swing.JLabel ZORRIANA;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel iniciarsesion;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
