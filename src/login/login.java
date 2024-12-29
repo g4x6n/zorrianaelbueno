@@ -5,6 +5,7 @@
 
 package login;
 
+import java.awt.Color;
 import tools.UtilsGUI;
 /**
  *
@@ -90,12 +91,22 @@ public class login extends javax.swing.JFrame {
         UsrTxtF.setText("Ingrese su usuario");
         UsrTxtF.setBorder(null);
         UsrTxtF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        UsrTxtF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                UsrTxtFMousePressed(evt);
+            }
+        });
         UsrTxtF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsrTxtFActionPerformed(evt);
             }
         });
-        bg.add(UsrTxtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 270, 30));
+        UsrTxtF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UsrTxtFKeyPressed(evt);
+            }
+        });
+        bg.add(UsrTxtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 270, 30));
         bg.add(UsrSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 270, 20));
 
         PswTitle.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -103,16 +114,43 @@ public class login extends javax.swing.JFrame {
         bg.add(PswTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 110, 30));
 
         PswField.setForeground(new java.awt.Color(204, 204, 204));
-        PswField.setText("Inserte su contraseña");
+        PswField.setText("********");
         PswField.setBorder(null);
         PswField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bg.add(PswField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 270, 30));
+        PswField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PswFieldMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PswFieldMousePressed(evt);
+            }
+        });
+        PswField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PswFieldActionPerformed(evt);
+            }
+        });
+        PswField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PswFieldKeyPressed(evt);
+            }
+        });
+        bg.add(PswField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 270, 30));
         bg.add(PswSep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 270, 20));
 
-        BTNEntrar.setBackground(new java.awt.Color(0, 204, 51));
+        BTNEntrar.setBackground(new java.awt.Color(169, 85, 15));
         BTNEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTNEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTNEntrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTNEntrarMouseExited(evt);
+            }
+        });
 
         LblEntrar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        LblEntrar.setForeground(new java.awt.Color(255, 255, 255));
         LblEntrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblEntrar.setText("ENTRAR");
 
@@ -135,30 +173,43 @@ public class login extends javax.swing.JFrame {
 
         bg.add(BTNEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 130, 40));
 
-        BTNCancelar.setBackground(new java.awt.Color(255, 51, 51));
-
-        LblCancelar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        LblCancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblCancelar.setText("CANCELAR");
-        LblCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LblCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+        BTNCancelar.setBackground(new java.awt.Color(107, 54, 10));
+        BTNCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTNCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LblCancelarMouseClicked(evt);
+                BTNCancelarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTNCancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTNCancelarMouseExited(evt);
             }
         });
+
+        LblCancelar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        LblCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        LblCancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblCancelar.setText("CANCELAR");
 
         javax.swing.GroupLayout BTNCancelarLayout = new javax.swing.GroupLayout(BTNCancelar);
         BTNCancelar.setLayout(BTNCancelarLayout);
         BTNCancelarLayout.setHorizontalGroup(
             BTNCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LblCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+            .addGroup(BTNCancelarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LblCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addContainerGap())
         );
         BTNCancelarLayout.setVerticalGroup(
             BTNCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LblCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGroup(BTNCancelarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LblCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        bg.add(BTNCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, -1));
+        bg.add(BTNCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,9 +229,80 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UsrTxtFActionPerformed
 
-    private void LblCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblCancelarMouseClicked
+    private void BTNEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEntrarMouseEntered
+        BTNEntrar.setBackground(Color.green);
+    }//GEN-LAST:event_BTNEntrarMouseEntered
+
+    private void BTNEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEntrarMouseExited
+        BTNEntrar.setBackground(new Color (169,85,15));
+    }//GEN-LAST:event_BTNEntrarMouseExited
+
+    private void BTNCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCancelarMouseEntered
+        BTNCancelar.setBackground(Color.red);
+    }//GEN-LAST:event_BTNCancelarMouseEntered
+
+    private void BTNCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCancelarMouseExited
+        BTNCancelar.setBackground(new Color (107,54,10));
+    }//GEN-LAST:event_BTNCancelarMouseExited
+
+    private void BTNCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCancelarMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_LblCancelarMouseClicked
+    }//GEN-LAST:event_BTNCancelarMouseClicked
+
+    private void UsrTxtFMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsrTxtFMousePressed
+        if (UsrTxtF.getText().equals("Ingrese su usuario")) {
+            UsrTxtF.setText("");
+            UsrTxtF.setForeground(Color.black);
+        }
+        if (String.valueOf(PswField.getPassword()).isEmpty()) {
+            PswField.setText("********");
+            PswField.setForeground(Color.gray);
+        }
+        
+        
+    }//GEN-LAST:event_UsrTxtFMousePressed
+
+    private void PswFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PswFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PswFieldActionPerformed
+
+    private void PswFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PswFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PswFieldMouseClicked
+
+    private void PswFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PswFieldMousePressed
+        if (String.valueOf(PswField.getPassword()).equals("********")) {
+            PswField.setText("");
+            PswField.setForeground(Color.black);
+        }
+        if (UsrTxtF.getText().isEmpty()) {
+            UsrTxtF.setText("Ingrese su usuario");
+            UsrTxtF.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_PswFieldMousePressed
+
+    private void UsrTxtFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsrTxtFKeyPressed
+    if (UsrTxtF.getText().equals("Ingrese su usuario")) {
+            UsrTxtF.setText("");
+            UsrTxtF.setForeground(Color.black);
+        }
+        if (String.valueOf(PswField.getPassword()).isEmpty()) {
+            PswField.setText("********");
+            PswField.setForeground(Color.gray);
+        }
+        
+    }//GEN-LAST:event_UsrTxtFKeyPressed
+
+    private void PswFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PswFieldKeyPressed
+         if (String.valueOf(PswField.getPassword()).equals("********")) {
+            PswField.setText("");
+            PswField.setForeground(Color.black);
+        }
+        if (UsrTxtF.getText().isEmpty()) {
+            UsrTxtF.setText("Ingrese su usuario");
+            UsrTxtF.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_PswFieldKeyPressed
 
     /**
      * @param args the command line arguments
