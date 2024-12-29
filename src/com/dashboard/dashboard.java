@@ -90,7 +90,7 @@ public class dashboard extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +133,7 @@ public class dashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-   appName.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        appName.setForeground(new java.awt.Color(255, 255, 255));
-        appName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        appName.setText("Zorriana");
-        appName.setToolTipText("");
+   
     /**
      * @param args the command line arguments
      */
