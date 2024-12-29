@@ -40,7 +40,7 @@ public class login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("ZORRIANA");
         jLabel1.setToolTipText("");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 200, 50));
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 200, 50));
 
         LOGO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoblanco.png"))); // NOI18N
