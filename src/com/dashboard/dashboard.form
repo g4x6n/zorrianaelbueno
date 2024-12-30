@@ -61,11 +61,12 @@
 
       <Layout>
         <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+          <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <Component id="Menu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="content" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
               <Component id="Header" max="32767" attributes="0"/>
           </Group>
@@ -74,10 +75,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="Header" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="content" max="32767" attributes="0"/>
                       <Component id="Menu" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="content" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -123,7 +127,7 @@
                       <Component id="Boton_Compras" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Boton_Productos" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Component id="Boton_Salida" min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -367,7 +371,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="Label_Dia" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="329" max="32767" attributes="0"/>
+                              <EmptySpace pref="361" max="32767" attributes="0"/>
                               <Component id="dateText" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -440,6 +444,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>
 
           <Layout>
