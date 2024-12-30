@@ -7,13 +7,22 @@ package login;
 
 import java.awt.Color;
 import database.dao.DaoEmpleado;
+import database.Conexion;
 import javax.swing.JOptionPane;
 import com.dashboard.dashboard; 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import tools.UtilsGUI;
 /**
  *
  * @author Alex
  */
+    Conexion conectar = null; 
+
+        public PreparedStatement ps;
+        public Connection conn ;
+        
+        
 public class login extends javax.swing.JFrame {
     DaoEmpleado daoempleado;
     int intent = 0;
@@ -317,15 +326,23 @@ public class login extends javax.swing.JFrame {
       String usuario = UsrTxtF.getText();
     char[] password = PswField.getPassword();
 
+    try{
+                              
+                   
+        String consulta="SELECT * FROM empleados WHERE usuario_empleado, CONTRASENIA_EMPLEADO LIKE ?,?";
+            ps = conn.prepareStatement(consulta);
+            // Set parameters for username and password
+            ps.setString(1, usuario);
+            ps.setString(2, String.valueOf(password));
+            rs = ps.executeQuery();
+            
+    
+    
+    
+    
     // Check if any of the fields are empty
-    if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor ingrese su usuario.", 
-                                      "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    if (password.length == 0 || String.valueOf(password).equals("********")) {
-        JOptionPane.showMessageDialog(this, "Por favor ingrese su contraseña.", 
+    if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()&& password.length == 0 || String.valueOf(password).equals("********")) {
+        JOptionPane.showMessageDialog(this, "Por favor llene todos los datos.", 
                                       "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
