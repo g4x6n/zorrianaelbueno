@@ -85,13 +85,13 @@ public class dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage( getClass().getResource("/img/icono.png")));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        jPanel1.setPreferredSize(new java.awt.Dimension(642, 552));
 
         Menu.setBackground(new java.awt.Color(247, 139, 86));
 
-        Boton_Inicio.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Inicio.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Inicio.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Home_Icon.png"))); // NOI18N
         Boton_Inicio.setText("INICIO");
@@ -107,7 +107,7 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
-        Boton_Cliente.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Cliente.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Cliente.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
         Boton_Cliente.setText("CLIENTES");
@@ -123,7 +123,7 @@ public class dashboard extends javax.swing.JFrame {
             }
         });
 
-        Boton_Empleados.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Empleados.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Empleados.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/empleado.png"))); // NOI18N
         Boton_Empleados.setText("EMPLEADOS");
@@ -134,7 +134,7 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Empleados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Empleados.setIconTextGap(25);
 
-        Boton_Proveedores.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Proveedores.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Proveedores.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Proveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/camion.png"))); // NOI18N
         Boton_Proveedores.setText("PROVEEDORES");
@@ -144,8 +144,13 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Proveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Boton_Proveedores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Proveedores.setIconTextGap(25);
+        Boton_Proveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_ProveedoresActionPerformed(evt);
+            }
+        });
 
-        Boton_Ventas.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Ventas.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Ventas.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/venta.png"))); // NOI18N
         Boton_Ventas.setText("VENTAS");
@@ -156,7 +161,7 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Ventas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Ventas.setIconTextGap(25);
 
-        Boton_Compras.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Compras.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Compras.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Compras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/compra.png"))); // NOI18N
         Boton_Compras.setText("COMPRAS");
@@ -167,7 +172,7 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Compras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Compras.setIconTextGap(25);
 
-        Boton_Productos.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
+        Boton_Productos.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Productos.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Productos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/producto.png"))); // NOI18N
         Boton_Productos.setText("PRODUCTOS");
@@ -197,20 +202,19 @@ public class dashboard extends javax.swing.JFrame {
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Boton_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(Boton_Inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Boton_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Boton_Empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Boton_Proveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
             .addComponent(Boton_Ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Boton_Compras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Boton_Productos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addComponent(Boton_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Boton_Proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(Boton_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Boton_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,7 +228,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(Boton_Compras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Boton_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(Boton_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -248,35 +252,31 @@ public class dashboard extends javax.swing.JFrame {
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addComponent(Label_Dia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
-                        .addComponent(dateText)))
-                .addContainerGap())
+                .addContainerGap(439, Short.MAX_VALUE)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_Dia))
+                .addGap(175, 175, 175)
+                .addComponent(dateText)
+                .addGap(20, 20, 20))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HeaderLayout.createSequentialGroup()
-                        .addContainerGap(33, Short.MAX_VALUE)
+                        .addGap(0, 20, Short.MAX_VALUE)
                         .addComponent(Label_Dia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(HeaderLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(50, 50, 50)
                         .addComponent(dateText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         content.setBackground(new java.awt.Color(255, 255, 255));
-        content.setMinimumSize(new java.awt.Dimension(642, 552));
+        content.setMinimumSize(new java.awt.Dimension(0, 0));
         content.setName(""); // NOI18N
         content.setPreferredSize(new java.awt.Dimension(642, 552));
 
@@ -296,9 +296,9 @@ public class dashboard extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE))
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE))
             .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -309,7 +309,7 @@ public class dashboard extends javax.swing.JFrame {
                     .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
@@ -319,12 +319,12 @@ public class dashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
         );
 
         pack();
@@ -343,6 +343,10 @@ public class dashboard extends javax.swing.JFrame {
         System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_Boton_SalidaMouseClicked
+
+    private void Boton_ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ProveedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Boton_ProveedoresActionPerformed
     private void SetDate (){
         LocalDate now = LocalDate.now();
         int year = now.getYear();
