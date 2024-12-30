@@ -17,6 +17,7 @@ import tools.UtilsGUI;
  *
  * @author Alex
  */
+//commit para que tenga algo diferente
     Conexion conectar = null; 
 
         public PreparedStatement ps;
