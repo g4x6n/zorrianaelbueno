@@ -5,57 +5,55 @@ import java.sql.*;
 
 public class DaoEmpleado extends Conexion {
     
-    // Este método verifica si el usuario y la contraseña existen en la base de datos
+    // This method checks if the user exists in the database
     public boolean verifyUser(String usr, char psw[]) {
-        // Usamos getEmployeeByUsr para validar el usuario
+        // Use getEmployeeByUsr to validate the user
         Object[] employee = getEmployeeByUsr(usr, psw);
         
-        // Si employee[0] no es 0, significa que el usuario fue encontrado en la base de datos
-        return employee != null && employee[0] != null && !employee[0].equals(0);
+        // If employee[0] is not 0, it means the user was found in the database
+        return employee != null && (int) employee[0] != 0;
     }
     
-    // Este método obtiene los datos del empleado a partir de su usuario y contraseña
     public Object[] getEmployeeByUsr(String usr, char psw[]) {
-        // Conectamos a la base de datos
+        // Search for an employee by their username and password
+        // Connect to the database
         conectar();
         
-        // Variable para almacenar los datos del empleado
-        Object[] employee = new Object[6]; // Array de tamaño 6 para los campos
-
-        // Convertir la contraseña char[] a String
-        String password = String.valueOf(psw);
+        // Variable to store the employee data
+        Object employee[];
         
         try {       
-            // Consulta SQL para obtener datos del empleado
-            sentenciaSQL = "SELECT ID_EMPLEADO, ID_PUESTO, PUESTO, NOMBRE, AP_PATERNO, AP_MATERNO " +
+            employee = new Object[6]; // Array size 6 to include all fields
+            // SQL query with JOIN to get employee data
+            sentenciaSQL  = "SELECT ID_EMPLEADO, ID_PUESTO, PUESTO, NOMBRE, AP_PATERNO, AP_MATERNO " +
                             "FROM EMPLEADO " +
                             "JOIN PUESTO USING (ID_PUESTO) " +
-                            "WHERE UPPER(USUARIO_EMPLEADO) = UPPER(?) " +
-                            "AND UPPER(CONTRASENIA_EMPLEADO) = UPPER(?)";
+                            "WHERE UPPER(USUARIO_EMPLEADO) LIKE UPPER(?) " +
+                            "AND UPPER(CONTRASENIA_EMPLEADO) LIKE UPPER(?)";
             ps = conn.prepareStatement(sentenciaSQL);
-            // Asignar parámetros para el usuario y la contraseña
+            // Set parameters for username and password
             ps.setString(1, usr);
-            ps.setString(2, password);
+            ps.setString(2, String.valueOf(psw));
             rs = ps.executeQuery();
             
-            // Verificar si se encontró el empleado
             if (rs.next()) {
-                employee[0] = rs.getString("ID_EMPLEADO"); // ID del empleado
-                employee[1] = rs.getString("ID_PUESTO"); // ID del puesto
-                employee[2] = rs.getString("PUESTO"); // Nombre del puesto
-                employee[3] = rs.getString("NOMBRE"); // Nombre del empleado
-                employee[4] = rs.getString("AP_PATERNO"); // Apellido paterno
-                employee[5] = rs.getString("AP_MATERNO"); // Apellido materno
+                // Retrieve employee data if found
+                employee[0] = rs.getString("ID_EMPLEADO"); 
+                employee[1] = rs.getString("ID_PUESTO");
+                employee[2] = rs.getString("PUESTO"); 
+                employee[3] = rs.getString("NOMBRE"); 
+                employee[4] = rs.getString("AP_PATERNO"); 
+                employee[5] = rs.getString("AP_MATERNO"); 
             } else {
-                employee[0] = null; // Si no se encuentra el usuario, devolver null
+                employee[0] = 0; // Return 0 if no employee found
             }
             return employee;
         } catch (SQLException ex) {
-            System.out.println("Error: " +  ex.getSQLState() + "\n\n" + ex.getMessage() + 
+            System.out.println("Error " +  ex.getSQLState() + "\n\n" + ex.getMessage() + 
                     "\n\n" + sentenciaSQL + "\n\nLocation: getEmployeeByUsr");
             return null;
         } finally {
-            desconectar(); // Cerramos la conexión a la base de datos
+            desconectar(); // Close the database connection
         }
     }
 }
