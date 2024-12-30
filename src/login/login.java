@@ -16,6 +16,10 @@ import tools.UtilsGUI;
 public class login extends javax.swing.JFrame {
     DaoEmpleado daoempleado;
     int intent = 0;
+      String idEmpleado;
+    String idTienda;
+    String store;
+    String employeeName;
     /**
      * Creates new form login
      */
@@ -316,7 +320,7 @@ public class login extends javax.swing.JFrame {
       String usuario = UsrTxtF.getText();
     char[] password = PswField.getPassword();
 
-    // Check if any of the fields are empty
+    // Verificar si alguno de los campos está vacío
     if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Por favor ingrese su usuario.", 
                                       "Error", JOptionPane.ERROR_MESSAGE);
@@ -329,21 +333,33 @@ public class login extends javax.swing.JFrame {
         return;
     }
 
-    // Authenticate the user using DaoEmpleado
+    // Autenticar al usuario usando DaoEmpleado
     Object[] employee = daoempleado.getEmployeeByUsr(usuario, password);
 
-    // If employee is not found or there is an error
+    // Si el empleado no es encontrado o hay un error
     if (employee == null || (int) employee[0] == 0) {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", 
                                       "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-        // Optional: Increment the attempt counter
         intent++;
         if (intent >= 3) {
             JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.", 
                                           "Error", JOptionPane.ERROR_MESSAGE);
-            System.exit(0); // Exit the program after 3 failed attempts
+            System.exit(0); // Cerrar el programa después de 3 intentos fallidos
         }
-    }  
+    } else {
+        // Si el empleado es encontrado, guardamos los datos
+        idEmpleado = (String) employee[0];  // ID del empleado
+        idTienda = (String) employee[1];    // ID de la tienda
+        store = (String) employee[2];       // Nombre del puesto
+        employeeName = (String) employee[3] + " " + (String) employee[4] + " " + (String) employee[5]; // Nombre completo
+
+        // Continuar con la transición al dashboard (debe implementarse)
+        JOptionPane.showMessageDialog(this, "¡Bienvenido, " + employeeName + "!", 
+                                      "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
+        // Aquí podrías abrir el dashboard o ventana principal del sistema
+        // new Dashboard().setVisible(true); // Ejemplo de cómo abrir una nueva ventana
+        this.setVisible(false);  // Cierra la ventana de login
+    }
     }//GEN-LAST:event_BTNEntrarMouseClicked
 
     /**

@@ -32,6 +32,6 @@ public class ConfigDataBase {
     // Configuración de la conexión
     public static String JDBC_DRIVER_ORACLE = "oracle.jdbc.driver.OracleDriver";
     public static String JDBC_PROTOCOL = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-    public static String JDBC_USER = "Usr_Renta";
-    public static String JDBC_PSW = "PassRenta";
+    public static String JDBC_USER = "ltcgun";
+    public static String JDBC_PSW = "mheealx";
 }
