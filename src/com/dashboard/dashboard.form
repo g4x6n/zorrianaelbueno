@@ -71,7 +71,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="Menu" min="-2" pref="217" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="content" pref="937" max="32767" attributes="0"/>
+                  <Component id="content" pref="936" max="32767" attributes="0"/>
               </Group>
               <Component id="Header" max="32767" attributes="0"/>
           </Group>
@@ -84,7 +84,7 @@
                       <Component id="Menu" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                          <Component id="content" pref="571" max="32767" attributes="0"/>
+                          <Component id="content" pref="566" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -116,7 +116,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="Boton_Inicio" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Boton_Cliente" min="-2" pref="65" max="-2" attributes="0"/>
@@ -220,6 +220,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="iconTextGap" type="int" value="25"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_EmpleadosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Boton_Proveedores">
               <Properties>
@@ -275,6 +278,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="iconTextGap" type="int" value="25"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_VentasActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Boton_Compras">
               <Properties>
@@ -327,6 +333,9 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="iconTextGap" type="int" value="25"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_ProductosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Boton_Salida">
               <Properties>
@@ -354,6 +363,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Boton_SalidaMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_SalidaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

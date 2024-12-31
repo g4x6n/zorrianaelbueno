@@ -28,7 +28,9 @@ public class dashboard extends javax.swing.JFrame {
         
     }
     private void initContent(){
+
         Principal pl = new Principal();
+        
         pl.setSize(920,580);
         pl.setLocation(0,0);
         
@@ -40,12 +42,20 @@ public class dashboard extends javax.swing.JFrame {
     
     private void configComponents(){
         // Titulo de la ventana
-        setTitle("Menu principal Zorriana");
+        setTitle("Menu principal Zorriana" );
         // posición de la ventana
         setLocationRelativeTo(null);
     }
     
-
+    private void ShowJPanel(dashboard pl){
+         pl.setSize(920,580);
+         pl.setLocation(0,0);
+         
+         content.removeAll();
+         content.add(pl,BorderLayout.CENTER);
+         content.revalidate();
+         content.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,6 +143,11 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Boton_Empleados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Empleados.setIconTextGap(25);
+        Boton_Empleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_EmpleadosActionPerformed(evt);
+            }
+        });
 
         Boton_Proveedores.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Proveedores.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,6 +175,11 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Boton_Ventas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Ventas.setIconTextGap(25);
+        Boton_Ventas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_VentasActionPerformed(evt);
+            }
+        });
 
         Boton_Compras.setFont(new java.awt.Font("Jost", 1, 18)); // NOI18N
         Boton_Compras.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,6 +202,11 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Productos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Boton_Productos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Boton_Productos.setIconTextGap(25);
+        Boton_Productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_ProductosActionPerformed(evt);
+            }
+        });
 
         Boton_Salida.setFont(new java.awt.Font("Jost", 1, 24)); // NOI18N
         Boton_Salida.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,6 +220,11 @@ public class dashboard extends javax.swing.JFrame {
         Boton_Salida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Boton_SalidaMouseClicked(evt);
+            }
+        });
+        Boton_Salida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_SalidaActionPerformed(evt);
             }
         });
 
@@ -214,7 +244,7 @@ public class dashboard extends javax.swing.JFrame {
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Boton_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Boton_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,7 +328,7 @@ public class dashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE))
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE))
             .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -309,7 +339,7 @@ public class dashboard extends javax.swing.JFrame {
                     .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
@@ -324,7 +354,7 @@ public class dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, Short.MAX_VALUE)
         );
 
         pack();
@@ -332,11 +362,13 @@ public class dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_InicioActionPerformed
-        // TODO add your handling code here:
+       //inicio 
+        
     }//GEN-LAST:event_Boton_InicioActionPerformed
 
     private void Boton_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ClienteActionPerformed
-        // TODO add your handling code here:
+        // cliente
+        //TODO add your handling code here:
     }//GEN-LAST:event_Boton_ClienteActionPerformed
 
     private void Boton_SalidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_SalidaMouseClicked
@@ -345,8 +377,26 @@ public class dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_SalidaMouseClicked
 
     private void Boton_ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ProveedoresActionPerformed
-        // TODO add your handling code here:
+        //Proveedor
     }//GEN-LAST:event_Boton_ProveedoresActionPerformed
+
+    private void Boton_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EmpleadosActionPerformed
+    //Empleado
+// TODO add your handling code here:
+    }//GEN-LAST:event_Boton_EmpleadosActionPerformed
+
+    private void Boton_VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_VentasActionPerformed
+//Ventas        
+// TODO add your handling code here:
+    }//GEN-LAST:event_Boton_VentasActionPerformed
+
+    private void Boton_SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_SalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Boton_SalidaActionPerformed
+
+    private void Boton_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Boton_ProductosActionPerformed
     private void SetDate (){
         LocalDate now = LocalDate.now();
         int year = now.getYear();
