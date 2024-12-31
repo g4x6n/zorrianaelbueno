@@ -35,6 +35,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         daoempleado = new DaoEmpleado();
         configComponents();
+        establecerConexion(); // Asegúrate de establecer la conexión aquí
     }
 
     private void configComponents() {
@@ -44,7 +45,11 @@ public class login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
     }
-
+private void establecerConexion() {
+    Conexion conexionBaseDatos = new Conexion();
+    conexionBaseDatos.conectar();
+    conexion = conexionBaseDatos.conn;
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
