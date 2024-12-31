@@ -17,12 +17,6 @@ import tools.UtilsGUI;
  *
  * @author Alex
  */
-//commit para que tenga algo diferente
-    Conexion conectar = null; 
-
-        public PreparedStatement ps;
-        public Connection conn ;
-        
         
 public class login extends javax.swing.JFrame {
     DaoEmpleado daoempleado;
@@ -327,20 +321,7 @@ public class login extends javax.swing.JFrame {
       String usuario = UsrTxtF.getText();
     char[] password = PswField.getPassword();
 
-    try{
-                              
-                   
-        String consulta="SELECT * FROM empleados WHERE usuario_empleado, CONTRASENIA_EMPLEADO LIKE ?,?";
-            ps = conn.prepareStatement(consulta);
-            // Set parameters for username and password
-            ps.setString(1, usuario);
-            ps.setString(2, String.valueOf(password));
-            rs = ps.executeQuery();
-            
-    
-    
-    
-    
+       
     // Check if any of the fields are empty
     if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()&& password.length == 0 || String.valueOf(password).equals("********")) {
         JOptionPane.showMessageDialog(this, "Por favor llene todos los datos.", 
@@ -361,7 +342,13 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.", 
                                           "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(0); // Exit the program after 3 failed attempts
-        }
+        } else {
+        // Si el usuario es válido, continuar con la lógica
+        JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.", 
+                                      "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+        new dashboard().setVisible(true);  // Ejemplo de redirección a otra ventana
+        this.dispose();  // Cerrar la ventana de login
+    }
         
     }  
     }//GEN-LAST:event_BTNEntrarMouseClicked
