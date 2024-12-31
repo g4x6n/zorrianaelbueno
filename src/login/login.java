@@ -321,35 +321,24 @@ public class login extends javax.swing.JFrame {
       String usuario = UsrTxtF.getText();
     char[] password = PswField.getPassword();
 
-       
-    // Check if any of the fields are empty
-    if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()&& password.length == 0 || String.valueOf(password).equals("********")) {
-        JOptionPane.showMessageDialog(this, "Por favor llene todos los datos.", 
+    // Validar campos vacíos
+    if (usuario.trim().isEmpty() || password.length == 0) {
+        JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos.", 
                                       "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
-    // Authenticate the user using DaoEmpleado
+    // Autenticar usuario
     Object[] employee = daoempleado.getEmployeeByUsr(usuario, password);
 
-    // If employee is not found or there is an error
-    if (employee == null || (int) employee[0] == 0) {
+    if (employee == null || employee[0] == null) {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", 
                                       "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-        // Optional: Increment the attempt counter
-        intent++;
-        if (intent >= 3) {
-            JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.", 
-                                          "Error", JOptionPane.ERROR_MESSAGE);
-            System.exit(0); // Exit the program after 3 failed attempts
-        } else {
-        // Si el usuario es válido, continuar con la lógica
+    } else {
         JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.", 
                                       "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
-        new dashboard().setVisible(true);  // Ejemplo de redirección a otra ventana
-        this.dispose();  // Cerrar la ventana de login
-    }
-        
+        new dashboard().setVisible(true);
+        this.dispose(); // Cerrar la ventana actual
     }  
     }//GEN-LAST:event_BTNEntrarMouseClicked
 
