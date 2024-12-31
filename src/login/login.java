@@ -2,31 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package login;
 
 import java.awt.Color;
 import database.dao.DaoEmpleado;
 import database.Conexion;
 import javax.swing.JOptionPane;
-import com.dashboard.dashboard; 
+import com.dashboard.dashboard;
+import database.ConfigDataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import tools.UtilsGUI;
+
 /**
  *
  * @author Alex
  */
-//commit para que tenga algo diferente
-    Conexion conectar = null; 
-
-        public PreparedStatement ps;
-        public Connection conn ;
-        
-        
 public class login extends javax.swing.JFrame {
+
     DaoEmpleado daoempleado;
     int intent = 0;
+    public ResultSet resultado;
+    PreparedStatement sentenciaPreparada;
+    public Connection conexion = null;
+
     /**
      * Creates new form login
      */
@@ -35,13 +36,13 @@ public class login extends javax.swing.JFrame {
         daoempleado = new DaoEmpleado();
         configComponents();
     }
-    	
-        private void configComponents(){
+
+    private void configComponents() {
         // Titulo de la ventana
         setTitle("Iniciar sesión");
         // posición de la ventana
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -253,7 +254,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNEntrarMouseEntered
 
     private void BTNEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEntrarMouseExited
-        BTNEntrar.setBackground(new Color (169,85,15));
+        BTNEntrar.setBackground(new Color(169, 85, 15));
     }//GEN-LAST:event_BTNEntrarMouseExited
 
     private void BTNCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCancelarMouseEntered
@@ -261,7 +262,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNCancelarMouseEntered
 
     private void BTNCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCancelarMouseExited
-        BTNCancelar.setBackground(new Color (107,54,10));
+        BTNCancelar.setBackground(new Color(107, 54, 10));
     }//GEN-LAST:event_BTNCancelarMouseExited
 
     private void BTNCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCancelarMouseClicked
@@ -277,8 +278,8 @@ public class login extends javax.swing.JFrame {
             PswField.setText("********");
             PswField.setForeground(Color.gray);
         }
-        
-        
+
+
     }//GEN-LAST:event_UsrTxtFMousePressed
 
     private void PswFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PswFieldActionPerformed
@@ -301,7 +302,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_PswFieldMousePressed
 
     private void UsrTxtFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsrTxtFKeyPressed
-    if (UsrTxtF.getText().equals("Ingrese su usuario")) {
+        if (UsrTxtF.getText().equals("Ingrese su usuario")) {
             UsrTxtF.setText("");
             UsrTxtF.setForeground(Color.black);
         }
@@ -309,11 +310,11 @@ public class login extends javax.swing.JFrame {
             PswField.setText("********");
             PswField.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_UsrTxtFKeyPressed
 
     private void PswFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PswFieldKeyPressed
-         if (String.valueOf(PswField.getPassword()).equals("********")) {
+        if (String.valueOf(PswField.getPassword()).equals("********")) {
             PswField.setText("");
             PswField.setForeground(Color.black);
         }
@@ -324,46 +325,65 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_PswFieldKeyPressed
 
     private void BTNEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEntrarMouseClicked
-      String usuario = UsrTxtF.getText();
-    char[] password = PswField.getPassword();
+        String usuario = UsrTxtF.getText();//Obtiene el usuario
+        char[] password = PswField.getPassword();//obtine la contraseña
+        //convierte la contraseña de un arreglo a un String para que se pueda comparar en la base de datos
+        String contrasena = new String(password);
+        try {
+            //Establece la sentencia en la base de datos, los ? son reemplazados por los datos ingresados por el usuario
+            String consulta = "SELECT * FROM empleados WHERE USUARIO_EMPLEADO=? AND CONTRASENIA_EMPLEADO=?";
+            //establece la consulta preparada para realizar la conexion a la base de datos
+            sentenciaPreparada = conexion.prepareStatement(consulta);
+            //debido a que el nombre del usario lo obtiene en la ejecución, por lo tanto es un parámetro
+            //Alos valores ingresador por el usuario los establece en la consulta
+            sentenciaPreparada.setString(1, usuario);
+            sentenciaPreparada.setString(2, contrasena);
+            //Ejecuta la sentencia en la base de datos
+            resultado = sentenciaPreparada.executeQuery();
+            //si cualquiera de los campos está vacío
+            if (usuario.equals("Ingrese su usuario") || usuario.isEmpty() && password.length == 0 || String.valueOf(password).equals("********")) {
+                JOptionPane.showMessageDialog(this, "Por favor llene todos los datos.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                //comprueba si hay registros y si hay más de un registro
+                if (resultado.next() && resultado.getInt(1) > 0) {
+                    if (resultado.getString(8).matches(usuario) && resultado.getString(9).matches(contrasena)) {
+                        JOptionPane.showMessageDialog(rootPane, "Bienvendid@ " + resultado.getString(2) + " " + resultado.getString(3) + " " + resultado.getString(4));
+                        //aqui va el codigo que debe llevar a la siguiente ventana una vez se autentica el usuario
+                    } else {
 
-    try{
-                              
-                   
-        String consulta="SELECT * FROM empleados WHERE usuario_empleado, CONTRASENIA_EMPLEADO LIKE ?,?";
-            ps = conn.prepareStatement(consulta);
-            // Set parameters for username and password
-            ps.setString(1, usuario);
-            ps.setString(2, String.valueOf(password));
-            rs = ps.executeQuery();
-            
-    
-    
-    
-    
-    // Check if any of the fields are empty
-    if (usuario.equals("Ingrese su usuario") || usuario.isEmpty()&& password.length == 0 || String.valueOf(password).equals("********")) {
-        JOptionPane.showMessageDialog(this, "Por favor llene todos los datos.", 
-                                      "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.",
+                            "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+                    // Optional: Increment the attempt counter
+                    intent++;
+                    // If employee is not found or there is an error
+                    if (intent >= 3) {
 
-    // Authenticate the user using DaoEmpleado
-    Object[] employee = daoempleado.getEmployeeByUsr(usuario, password);
+                        JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                        System.exit(0); // Exit the program after 3 failed attempts
+                    }
+                }
+            }
+        } catch (SQLException evento) {
+            System.out.println(ConfigDataBase.DB_T_ERROR + evento.getSQLState()
+                    + ConfigDataBase.DB_NOCONECT);
+        }
+        // Authenticate the user using DaoEmpleado
+        Object[] employee = daoempleado.getEmployeeByUsr(usuario, password);
 
-    // If employee is not found or there is an error
-    if (employee == null || (int) employee[0] == 0) {
-        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", 
-                                      "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-        // Optional: Increment the attempt counter
-        intent++;
-        if (intent >= 3) {
-            JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.", 
-                                          "Error", JOptionPane.ERROR_MESSAGE);
+        // If employee is not found or there is an error
+        if (employee == null || (int) employee[0] == 0 && intent >= 3) {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.",
+                    "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            // Optional: Increment the attempt counter
+            intent++;
+            JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El programa se cerrará.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(0); // Exit the program after 3 failed attempts
         }
-        
-    }  
     }//GEN-LAST:event_BTNEntrarMouseClicked
 
     /**
